@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.newsdemo.databinding.ItemNewsBinding
+import com.example.newsdemo.model.Article
 
 class NewsAdapter :
     ListAdapter<Article, NewsViewHolder>(NewsDiffUtil()) {

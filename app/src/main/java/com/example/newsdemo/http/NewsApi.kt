@@ -1,6 +1,6 @@
 package com.example.newsdemo.http
 
-import com.example.newsdemo.NewsResponse
+import com.example.newsdemo.model.NewsResponse
 import kotlinx.coroutines.flow.Flow
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

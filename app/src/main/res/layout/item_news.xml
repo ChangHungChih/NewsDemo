@@ -6,7 +6,7 @@
 
         <variable
             name="article"
-            type="com.example.newsdemo.Article" />
+            type="com.example.newsdemo.model.Article" />
 
     </data>
 

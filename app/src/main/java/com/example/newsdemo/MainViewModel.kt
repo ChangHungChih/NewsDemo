@@ -16,7 +16,8 @@ class MainViewModel : ViewModel() {
         Realm.getDefaultInstance()
     }
 
-    val articleLLL : LiveData<RealmResults<Article>> = realm.where(Article::class.java).findAll().asLiveData()
+    val articleList: LiveData<RealmResults<Article>> =
+        realm.where(Article::class.java).findAll().asLiveData()
 
     fun getTopHeadlines() {
         newsApi.getTopHeadlines()

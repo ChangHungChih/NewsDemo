@@ -5,10 +5,21 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.newsdemo.databinding.ActivityMainBinding
+import com.example.newsdemo.repository.NewsLocalDataSource
+import com.example.newsdemo.repository.NewsRemoteDataSource
+import com.example.newsdemo.repository.NewsRepository
+import io.realm.Realm
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
-    private val viewModel: MainViewModel by viewModels()
+    val realm: Realm by lazy {
+        Realm.getDefaultInstance()
+    }
+    private val viewModel: MainViewModel = MainViewModel(
+        NewsRepository(
+            NewsRemoteDataSource(), NewsLocalDataSource(realm)
+        )
+    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,5 +37,10 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         viewModel.getTopHeadlines()
+    }
+
+    override fun onDestroy() {
+        realm.close()
+        super.onDestroy()
     }
 }
